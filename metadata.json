@@ -1,0 +1,6 @@
+{
+  "name": "Rachel's Mobile Physio",
+  "description": "Professional mobile physiotherapy website for Rachel Dara Temper in Montreal and South Shore, showcasing clinical expertise, interactive symptom guidance, booking calendar, and client reviews.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
