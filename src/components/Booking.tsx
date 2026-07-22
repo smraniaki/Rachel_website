@@ -152,7 +152,7 @@ export default function Booking({ lang }: BookingProps) {
       createdAt: new Date().toISOString()
     };
 
-    // Prepare clean email payload for smraniaki@gmail.com
+    // Prepare clean email payload for racheltemper24@gmail.com
     const serviceTitle = selectedType === 'assessment' 
       ? 'Initial In-Home Assessment & Treatment ($130)' 
       : selectedType === 'followup' 
@@ -169,7 +169,7 @@ export default function Booking({ lang }: BookingProps) {
       _subject: `New Physiotherapy Booking: ${name} (${selectedDate})`,
       _template: "table",
       _captcha: "false",
-      "Notification Email": "smraniaki@gmail.com",
+      "Notification Email": "racheltemper24@gmail.com",
       "Patient Name": name,
       "Patient Email": email,
       "Patient Phone": phone,
@@ -184,7 +184,7 @@ export default function Booking({ lang }: BookingProps) {
     };
 
     try {
-      await fetch("https://formsubmit.co/ajax/smraniaki@gmail.com", {
+      await fetch("https://formsubmit.co/ajax/racheltemper24@gmail.com", {
         method: "POST",
         headers: { 
           'Content-Type': 'application/json',
@@ -364,7 +364,7 @@ export default function Booking({ lang }: BookingProps) {
                           required
                           value={name}
                           onChange={(e) => setName(e.target.value)}
-                          placeholder="Rachel Dara"
+                          placeholder=""
                           className="w-full px-4 py-3 bg-white border border-sage-300 rounded-2xl text-sm font-sans focus:outline-none focus:border-sage-600 shadow-sm text-charcoal-800"
                         />
                       </div>
@@ -380,7 +380,7 @@ export default function Booking({ lang }: BookingProps) {
                           required
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
-                          placeholder="e.g., 438-686-4317"
+                          placeholder=""
                           className="w-full px-4 py-3 bg-white border border-sage-300 rounded-2xl text-sm font-sans focus:outline-none focus:border-sage-600 shadow-sm font-mono text-charcoal-800"
                         />
                       </div>
@@ -396,7 +396,7 @@ export default function Booking({ lang }: BookingProps) {
                           required
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          placeholder="rachelmobilephysio@gmail.com"
+                          placeholder=""
                           className="w-full px-4 py-3 bg-white border border-sage-300 rounded-2xl text-sm font-sans focus:outline-none focus:border-sage-600 shadow-sm text-charcoal-800"
                         />
                       </div>
@@ -414,7 +414,7 @@ export default function Booking({ lang }: BookingProps) {
                               required={selectedType !== 'consult'}
                               value={address}
                               onChange={(e) => setAddress(e.target.value)}
-                              placeholder="e.g., 456 Rue Sherbrooke O, Montreal, QC"
+                              placeholder=""
                               className="w-full px-4 py-3 bg-white border border-sage-300 rounded-2xl text-sm font-sans focus:outline-none focus:border-sage-600 shadow-sm text-charcoal-800"
                             />
                           </div>
@@ -430,7 +430,7 @@ export default function Booking({ lang }: BookingProps) {
                               required={selectedType !== 'consult'}
                               value={postalCode}
                               onChange={handlePostalChange}
-                              placeholder="e.g., H2W 1Y4"
+                              placeholder=""
                               maxLength={7}
                               className="w-full px-4 py-3 bg-white border border-sage-300 rounded-2xl text-sm font-sans focus:outline-none focus:border-sage-600 shadow-sm uppercase font-mono text-charcoal-800"
                             />
@@ -577,7 +577,7 @@ export default function Booking({ lang }: BookingProps) {
 
                   <div className="p-3 bg-sage-100/80 border border-sage-300 rounded-xl text-charcoal-800 text-xs font-medium max-w-md mx-auto flex items-center justify-center gap-2">
                     <Mail className="w-4 h-4 text-sage-600 flex-shrink-0" />
-                    <span>Notification email sent to <strong>smraniaki@gmail.com</strong></span>
+                    <span>Notification email sent to <strong>racheltemper24@gmail.com</strong></span>
                   </div>
 
                   <div className="pt-4">
