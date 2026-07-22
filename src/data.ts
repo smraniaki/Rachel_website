@@ -69,8 +69,8 @@ export const TRANSLATIONS = {
     },
     about: {
       title: "About Me",
-      experience: "12+ Years of Experience",
-      p1: "As a certified Physiotherapist with 12+ years of experience in the Montreal area, I specialize in treating a wide range of orthopedic, neurological, and geriatric conditions directly inside my patients' homes.",
+      experience: "Years of Experience",
+      p1: "As a certified Physiotherapist with many years of experience in the Montreal area, I specialize in treating a wide range of orthopedic, neurological, and geriatric conditions directly inside my patients' homes.",
       p2: "My mobile clinic brings personalized care directly to you, eliminating the stress and physical pain of traveling. I offer effective, evidence-based treatments including therapeutic massage, joint mobilization, neuromuscular re-education, and tailored exercise rehabilitation.",
       p3: "Whether you're recovering from joint replacement surgery, managing chronic musculoskeletal pain, or seeking to improve your balance and prevent falls, my goal is to help you regain your independence and get back to feeling your absolute best.",
       credentialTitle: "Professional Credentials",
@@ -265,8 +265,8 @@ export const TRANSLATIONS = {
     },
     about: {
       title: "À propos de moi",
-      experience: "Plus de 12 ans d'expérience",
-      p1: "En tant que physiothérapeute agréée comptant plus de 12 ans d'expérience dans la région de Montréal, je me spécialise dans le traitement d'une grande variété de conditions orthopédiques, neurologiques et gériatriques directement chez mes patients.",
+      experience: "Années d'expérience",
+      p1: "En tant que physiothérapeute agréée comptant de nombreuses années d'expérience dans la région de Montréal, je me spécialise dans le traitement d'une grande variété de conditions orthopédiques, neurologiques et gériatriques directement chez mes patients.",
       p2: "Ma clinique mobile apporte des soins personnalisés directement à vous, éliminant le stress et la douleur physique liés aux déplacements. J'offre des traitements efficaces et fondés sur des données probantes, notamment le massage thérapeutique, la mobilisation articulaire, la rééducation neuromusculaire et la réadaptation par l'exercice sur mesure.",
       p3: "Que vous vous remettiez d'une chirurgie de remplacement articulaire, que vous gériez des douleurs musculosquelettiques chroniques ou que vous cherchiez à améliorer votre équilibre et à prévenir les chutes, mon objectif est de vous aider à retrouver votre autonomie et à vous redonner votre pleine forme.",
       credentialTitle: "Titres professionnels",

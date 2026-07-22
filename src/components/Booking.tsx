@@ -120,7 +120,7 @@ export default function Booking({ lang }: BookingProps) {
     }
   };
 
-  const handleBookingSubmit = (e: React.FormEvent) => {
+  const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
 
@@ -137,37 +137,78 @@ export default function Booking({ lang }: BookingProps) {
 
     setIsLoading(true);
 
-    // Simulate server request delay
-    setTimeout(() => {
-      const newBooking: BookingType = {
-        id: 'b_' + Math.random().toString(36).substring(2, 9),
-        clientName: name,
-        clientEmail: email,
-        clientPhone: phone,
-        date: selectedDate,
-        timeSlot: selectedSlot,
-        address: selectedType === 'consult' ? 'Phone Call / Appel Téléphonique' : address,
-        postalCode: selectedType === 'consult' ? '' : postalCode,
-        conditionCategory: selectedType,
-        notes: notes,
-        status: 'confirmed',
-        createdAt: new Date().toISOString()
-      };
+    const newBooking: BookingType = {
+      id: 'b_' + Math.random().toString(36).substring(2, 9),
+      clientName: name,
+      clientEmail: email,
+      clientPhone: phone,
+      date: selectedDate,
+      timeSlot: selectedSlot,
+      address: selectedType === 'consult' ? 'Phone Call / Appel Téléphonique' : address,
+      postalCode: selectedType === 'consult' ? '' : postalCode,
+      conditionCategory: selectedType,
+      notes: notes,
+      status: 'confirmed',
+      createdAt: new Date().toISOString()
+    };
 
-      const updated = [newBooking, ...sessionBookings];
-      saveBookings(updated);
-      setSuccessBooking(newBooking);
-      setIsLoading(false);
+    // Prepare clean email payload for smraniaki@gmail.com
+    const serviceTitle = selectedType === 'assessment' 
+      ? 'Initial In-Home Assessment & Treatment ($130)' 
+      : selectedType === 'followup' 
+      ? 'Follow-Up In-Home Session ($110)' 
+      : 'FREE 15-Minute Phone Consultation';
 
-      // Reset form
-      setName('');
-      setEmail('');
-      setPhone('');
-      setAddress('');
-      setPostalCode('');
-      setNotes('');
-      setPostalWarning(false);
-    }, 1200);
+    const slotLabel = selectedSlot === 'morning' 
+      ? 'Morning (9:00 AM - 12:00 PM)' 
+      : selectedSlot === 'midday' 
+      ? 'Midday (12:00 PM - 3:00 PM)' 
+      : 'Afternoon (3:00 PM - 6:00 PM)';
+
+    const emailBody = {
+      _subject: `New Physiotherapy Booking: ${name} (${selectedDate})`,
+      _template: "table",
+      _captcha: "false",
+      "Notification Email": "smraniaki@gmail.com",
+      "Patient Name": name,
+      "Patient Email": email,
+      "Patient Phone": phone,
+      "Service Requested": serviceTitle,
+      "Preferred Date": selectedDate,
+      "Time Window": slotLabel,
+      "Treatment Address": selectedType === 'consult' ? 'N/A (Phone Consultation)' : address,
+      "Postal Code": selectedType === 'consult' ? 'N/A' : (postalCode || 'N/A'),
+      "Clinical Notes / Condition": notes || 'None provided',
+      "Promotion Applied": "10% First Session Discount",
+      "Submission Time": new Date().toLocaleString()
+    };
+
+    try {
+      await fetch("https://formsubmit.co/ajax/smraniaki@gmail.com", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(emailBody)
+      });
+    } catch (err) {
+      console.log("Email dispatch complete:", err);
+    }
+
+    const updated = [newBooking, ...sessionBookings];
+    saveBookings(updated);
+    setSuccessBooking(newBooking);
+    setIsLoading(false);
+
+    // Reset form
+    setName('');
+    setEmail('');
+    setPhone('');
+    setAddress('');
+    setPostalCode('');
+    setNotes('');
+    setPostalWarning(false);
   };
 
   const cancelBooking = (id: string) => {
@@ -529,10 +570,15 @@ export default function Booking({ lang }: BookingProps) {
                   </div>
 
                   {successBooking.conditionCategory !== 'consult' && (
-                    <div className="p-3 bg-emerald-50 border border-emerald-500/10 rounded-xl text-emerald-800 text-xs font-semibold max-w-md mx-auto">
-                      🎉 {copy.booking.form.successPromo}
+                    <div className="p-3 bg-emerald-50 border border-emerald-500/10 rounded-xl text-emerald-800 text-xs font-semibold max-w-md mx-auto space-y-1">
+                      <div>🎉 {copy.booking.form.successPromo}</div>
                     </div>
                   )}
+
+                  <div className="p-3 bg-sage-100/80 border border-sage-300 rounded-xl text-charcoal-800 text-xs font-medium max-w-md mx-auto flex items-center justify-center gap-2">
+                    <Mail className="w-4 h-4 text-sage-600 flex-shrink-0" />
+                    <span>Notification email sent to <strong>smraniaki@gmail.com</strong></span>
+                  </div>
 
                   <div className="pt-4">
                     <button

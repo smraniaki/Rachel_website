@@ -84,7 +84,7 @@ export default function Hero({ lang }: HeroProps) {
             >
               <span className="flex items-center gap-1.5 bg-sage-100/60 px-3 py-1.5 rounded-full border border-sage-300 shadow-sm">
                 <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-                <strong>5.0 Star Rated</strong> on Google Maps
+                <strong>5.0 Star Rated</strong> Verified Client Reviews
               </span>
               <span className="flex items-center gap-1.5 bg-sage-100/60 px-3 py-1.5 rounded-full border border-sage-300 shadow-sm">
                 <HeartPulse className="w-4 h-4 text-sage-600" />
